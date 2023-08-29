@@ -1,5 +1,6 @@
 import express from "express";
 import { CreatePassenger } from "./CreatePassenger";
+import { CreateDriver } from "./CreateDriver";
 const app = express();
 
 app.use(express.json());
@@ -11,6 +12,11 @@ app.post("/passengers", function (req, res) {
     res.json({ passenger_id });
 });
 
-app.post("/drivers", function (req, res) {});
+app.post("/drivers", function (req, res) {
+    const { name, email, document, car_plate } = req.body;
+    const createDriver = new CreateDriver();
+    const driver_id = createDriver.create(name, email, document, car_plate);
+    res.json({ driver_id });
+});
 
 app.listen(3000);
