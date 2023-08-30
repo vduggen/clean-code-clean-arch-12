@@ -1,16 +1,24 @@
 export class Document {
+    private isValidLength(str: any) {
+        return str.length >= 11 && str.length <= 14;
+    }
+
+    private allDigitsSame(str: any) {
+        // @ts-ignore
+        return str.split("").every(c => c === str[0]);
+    }
+
     // @ts-ignore
     public validate (str) {
         if (!str) return false;
-        if (str.length < 11 || str.length > 14) return false 
+        if (!this.isValidLength(str)) return false;
         str = str.replace(/\D/g, '');
-        // @ts-ignore
-        if (str.split("").every(c => c === str[0])) return false
+        if (this.allDigitsSame(str)) return false;
         try {
-            let     d1, d2;  
-            let     dg1, dg2, rest;  
-            let     digito;  
-                let     nDigResult;  
+            let d1, d2;  
+            let dg1, dg2, rest;  
+            let digito;  
+            let nDigResult;  
             d1 = d2 = 0;  
             dg1 = dg2 = rest = 0;  
             for (let nCount = 1; nCount < str.length -1; nCount++) {  
