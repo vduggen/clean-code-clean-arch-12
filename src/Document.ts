@@ -19,17 +19,10 @@ export class Document {
                             d1 = d2 = 0;  
                             dg1 = dg2 = rest = 0;  
                             for (let nCount = 1; nCount < str.length -1; nCount++) {  
-                                // if (isNaN(parseInt(str.substring(nCount -1, nCount)))) {
-                                    // 	return false;
-                                    // } else {
-                                    // pega cada digito da string
-                                    digito = parseInt(str.substring(nCount -1, nCount));  							
-                                    // guarda cada multiplicação
-                                    d1 = d1 + ( 11 - nCount ) * digito;  
-                                    d2 = d2 + ( 12 - nCount ) * digito;  
-                                // }
+                                digito = parseInt(str.substring(nCount -1, nCount));  							
+                                d1 = d1 + ( 11 - nCount ) * digito;  
+                                d2 = d2 + ( 12 - nCount ) * digito;  
                             };  
-                            // pega o resto da divisão
                             rest = (d1 % 11);  
                             dg1 = (rest < 2) ? dg1 = 0 : 11 - rest;  
                             d2 += 2 * dg1;  
