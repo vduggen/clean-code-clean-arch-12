@@ -3,11 +3,7 @@ export class Document {
     public validate (str) {
         if (!str) return false;
         if (str.length < 11 || str.length > 14) return false 
-        str=str
-            .replace('.','')
-            .replace('.','')
-            .replace('-','')
-            .replace(" ","");  
+        str=str.replace(/\D/g, '');  
         // @ts-ignore
         if (!str.split("").every(c => c === str[0])) {
             try{  
