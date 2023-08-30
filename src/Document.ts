@@ -23,12 +23,12 @@ export class Document {
                 d1 += ( 11 - nCount ) * digito;
                 d2 += ( 12 - nCount ) * digito;
             };  
-            let rest = (d1 % 11);
-            const dg1 = (rest < 2) ? 0 : 11 - rest;
+            const rest1 = (d1 % 11);
+            const dg1 = (rest1 < 2) ? 0 : 11 - rest1;
             d2 += 2 * dg1;  
-            rest = (d2 % 11);  
+            const rest2 = (d2 % 11);  
             const nDigVerific = str.substring(str.length-2, str.length);  
-            const dg2 = (rest < 2) ? 0 : 11 - rest;
+            const dg2 = (rest2 < 2) ? 0 : 11 - rest2;
             const nDigResult = "" + dg1 + "" + dg2;
             return nDigVerific == nDigResult;
         }catch (e){  
