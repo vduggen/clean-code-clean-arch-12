@@ -17,25 +17,19 @@ export class Document {
         try {
             let digito = 0;
             let d1 = 0;
-            let d2 = 0;  
+            let d2 = 0;
             for (let nCount = 1; nCount < str.length -1; nCount++) {  
-                digito = parseInt(str.substring(nCount -1, nCount));  							
-                d1 = d1 + ( 11 - nCount ) * digito;  
-                d2 = d2 + ( 12 - nCount ) * digito;  
+                digito = parseInt(str.substring(nCount -1, nCount));
+                d1 += ( 11 - nCount ) * digito;
+                d2 += ( 12 - nCount ) * digito;
             };  
             let rest = (d1 % 11);
-            let dg1 = 0;
-            dg1 = (rest < 2) ? dg1 = 0 : 11 - rest;  
+            const dg1 = (rest < 2) ? 0 : 11 - rest;
             d2 += 2 * dg1;  
             rest = (d2 % 11);  
-            let dg2 = 0;
-            if (rest < 2)  
-                dg2 = 0;  
-            else  
-                dg2 = 11 - rest;  
-            let nDigVerific = str.substring(str.length-2, str.length);  
-            let nDigResult;
-            nDigResult = "" + dg1 + "" + dg2;  
+            const nDigVerific = str.substring(str.length-2, str.length);  
+            const dg2 = (rest < 2) ? 0 : 11 - rest;
+            const nDigResult = "" + dg1 + "" + dg2;
             return nDigVerific == nDigResult;
         }catch (e){  
             console.error("Erro !"+e);  
