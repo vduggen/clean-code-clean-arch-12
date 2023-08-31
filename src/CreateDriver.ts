@@ -13,10 +13,11 @@ export class CreateDriver {
     create(
         name: string,
         email: string,
-        document: Document,
+        document: unknown,
         car_plate: string
     ): UUID {
-        const driver = new Driver(name, email, document, car_plate);
+        const documentValidated = new Document(document);
+        const driver = new Driver(name, email, documentValidated, car_plate);
         const id = crypto.randomUUID();
         this.drivers.push({
             id,

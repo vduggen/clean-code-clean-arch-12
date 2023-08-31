@@ -13,9 +13,10 @@ export class CreatePassenger {
     create(
         name: string,
         email: string,
-        document: Document
+        document: unknown
     ): UUID {
-        const passenger = new Passenger(name, email, document);
+        const documentValidated = new Document(document);
+        const passenger = new Passenger(name, email, documentValidated);
         const id = crypto.randomUUID();
         this.passengers.push({
             id,

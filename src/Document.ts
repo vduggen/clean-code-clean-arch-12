@@ -1,3 +1,5 @@
+import DocumentInvalidException from "./DocumentInvalidException";
+
 export class Document {
     private readonly MINIMUN_LENGTH = 11;
     private readonly MAXIMUM_LENGTH = 14;
@@ -80,16 +82,11 @@ export class Document {
         return this.getDocument().replace(/\D/g, '');
     }
 
-    public validate() {
-        if (!this.document) return false;
-        if (!this.isValidLength(this.document)) return false;
+    private validate() {
+        if (!this.document) throw new DocumentInvalidException();
+        if (!this.isValidLength(this.document)) throw new DocumentInvalidException();
         const documentFormatted = this.getFormatted();
-        if (this.allDigitsSame(documentFormatted)) return false;
-        try {
-            return this.getLastTwoDigitsIsValid(documentFormatted);
-        }catch (e){  
-            console.error("Erro !"+e);  
-            return false;  
-        }  
+        if (this.allDigitsSame(documentFormatted)) throw new DocumentInvalidException();
+        if (!this.getLastTwoDigitsIsValid(documentFormatted)) throw new DocumentInvalidException();
     }
 }
